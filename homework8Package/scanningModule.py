@@ -1,7 +1,7 @@
 import csv
 import json
 import os
-
+# Последнее задание - просканировать директорию
 
 
 def scanningDirectoria(dir = os.getcwd(), jsonName = None, csvName = None):
@@ -45,5 +45,5 @@ def fileName(path):
 
 
 if __name__ == '__main__':
-    print(scanningDirectoria(os.path.join(os.getcwd(), 'lessons','l1'),jsonName='json_scan.json',csvName='csv_scan.csv'))
+    print(scanningDirectoria(os.path.join(os.getcwd()),jsonName='json_scan.json',csvName='csv_scan.csv'))
     # print(scanningDirectoria(os.path.join(os.getcwd())))
