@@ -1,6 +1,8 @@
 import logging
 import argparse
 
+CONSOLE_MOD_ON = True # True - ввод с консоли
+
 logging.basicConfig(
     filename='LogRectangles.log',
     encoding='utf-8',
@@ -31,10 +33,10 @@ class Valid():
             logger.error(f'{value} не является целым или вещественным числом.')
             raise TypeError(f'Неверный тип значения. Значение должно быть целым или вещественным числом.')
         if self.min_value is not None and value < self.min_value:
-            logger.error(f'Параметр не может принимать значения меньше {self.min_value}')
+            logger.error(f'Сторона не может принимать значения меньше {self.min_value}')
             raise ValueError(f'{value} меньше {self.min_value}')
         if self.max_value is not None and value > self.max_value:
-            logger.error(f'Параметр не может принимать значения больше {self.max_value}')
+            logger.error(f'Сторона не может принимать значения больше {self.max_value}')
             raise ValueError(f'{value} больше {self.max_value}')
 
     
@@ -100,10 +102,12 @@ class Rectangle():
     def __str__(self):
         return f'Rectangle({self._lenght}, {self._width})'
 
-parser = argparse.ArgumentParser()
-parser.add_argument('parameter',nargs=2)
-args = parser.parse_args()
-print(args.parameter)
+
+if CONSOLE_MOD_ON:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('parameter', type=float, nargs=2)
+    args = parser.parse_args()
+    Rectangle(args.parameter[0],args.parameter[1])
 
 # if __name__ == '__main__':    
 #     a = Rectangle(3)
